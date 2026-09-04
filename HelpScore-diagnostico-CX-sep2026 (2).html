@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noindex,nofollow" name="robots"/>
+<meta content="#171714" name="theme-color"/>
+<meta content="Diagnóstico de CX orientado al cliente sobre el recorrido público de HelpScore, con evidencia, hipótesis, comparativo de la categoría, visión futura, hoja de ruta y preguntas de descubrimiento." name="description"/>
+<title>HelpScore | Diagnóstico de CX para el cliente</title>
+<style>
+    :root {
+      --ink: #171714;
+      --ink-2: #262621;
+      --muted: #66665f;
+      --muted-2: #8d8d85;
+      --paper: #f4f2ea;
+      --surface: #ffffff;
+      --surface-2: #f9f8f3;
+      --line: #dedbd0;
+      --yellow: #f7c948;
+      --yellow-2: #ffe69a;
+      --yellow-3: #fff6d5;
+      --green: #1f6d55;
+      --green-bg: #e8f4ee;
+      --blue: #315f8f;
+      --blue-bg: #eaf1f8;
+      --orange: #a65722;
+      --orange-bg: #fbefe5;
+      --red: #8a3c36;
+      --red-bg: #f8eae8;
+      --purple: #5a3ec8;
+      --purple-bg: #eeeafe;
+      --shadow-sm: 0 8px 24px rgba(23, 23, 20, 0.06);
+      --shadow-md: 0 18px 50px rgba(23, 23, 20, 0.11);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    svg { display: block; }
+
+    .skip-link {
+      position: fixed;
+      z-index: 1000;
+      left: 16px;
+      top: -60px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: var(--shadow-sm);
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 16px; }
+
+    .scroll-progress {
+      position: fixed;
+      z-index: 1001;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, var(--yellow), #fff1ae);
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 100;
+      top: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(23, 23, 20, 0.94);
+      backdrop-filter: blur(14px);
+      color: #fff;
+    }
+    .header-inner {
+      width: min(calc(100% - 36px), var(--max));
+      min-height: 70px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+      font-weight: 780;
+      letter-spacing: -0.02em;
+    }
+    .brand small {
+      display: block;
+      margin-bottom: -2px;
+      color: #bdbdb4;
+      font-size: 9px;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .brand-score { color: var(--yellow); }
+    .pixel-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      transform: rotate(-2deg);
+    }
+    .pixel-mark span { border-radius: 1px; background: rgba(255,255,255,0.12); }
+    .pixel-mark span:nth-child(1),
+    .pixel-mark span:nth-child(2),
+    .pixel-mark span:nth-child(4),
+    .pixel-mark span:nth-child(5),
+    .pixel-mark span:nth-child(8) { background: var(--yellow); }
+    .pixel-mark span:nth-child(3),
+    .pixel-mark span:nth-child(7) { background: #fff; }
+
+    .site-nav {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+    .site-nav a {
+      padding: 9px 10px;
+      border-radius: 8px;
+      color: #c8c8c0;
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .site-nav a:hover,
+    .site-nav a.active { color: #fff; background: rgba(255,255,255,0.08); }
+    .header-actions { display: flex; align-items: center; gap: 8px; }
+    .header-button,
+    .menu-button {
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+    }
+    .header-button {
+      padding: 9px 12px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .header-button:hover { border-color: var(--yellow); color: var(--yellow); }
+    .menu-button {
+      width: 42px;
+      height: 42px;
+      display: none;
+      place-items: center;
+    }
+
+    main { overflow: hidden; }
+    .container { width: min(calc(100% - 36px), var(--max)); margin: 0 auto; }
+    .section { position: relative; padding: 102px 0; scroll-margin-top: 78px; }
+    .section.compact { padding: 72px 0; }
+    .section.white { background: var(--surface); }
+    .section.dark { background: var(--ink); color: #fff; }
+    .section.soft { background: var(--surface-2); }
+    .section + .section { border-top: 1px solid rgba(23,23,20,0.04); }
+
+    .hero {
+      position: relative;
+      min-height: 690px;
+      display: grid;
+      align-items: center;
+      color: #fff;
+      background:
+        radial-gradient(circle at 79% 34%, rgba(247,201,72,0.22), transparent 34%),
+        linear-gradient(135deg, #12120f 0%, #1d1d18 66%, #24231b 100%);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to right, transparent 0%, #000 45%, #000 100%);
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(380px, 0.92fr);
+      gap: 56px;
+      align-items: center;
+      padding: 88px 0 94px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: currentColor;
+    }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 {
+      max-width: 810px;
+      margin-bottom: 24px;
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: 0.99;
+      letter-spacing: -0.058em;
+    }
+    h1 .accent { color: var(--yellow); }
+    .hero-lede {
+      max-width: 740px;
+      margin-bottom: 28px;
+      color: #d2d2ca;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+    }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 30px; }
+    .hero-chip {
+      padding: 8px 11px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: #ecece6;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .hero-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      max-width: 720px;
+      color: #aaa9a1;
+      font-size: 13px;
+    }
+    .hero-note svg { flex: 0 0 auto; margin-top: 3px; color: var(--yellow); }
+
+    .hero-visual {
+      position: relative;
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+    }
+    .hero-orbit {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      animation: orbit 22s linear infinite;
+    }
+    .hero-orbit::before,
+    .hero-orbit::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border: 4px solid var(--ink);
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.18);
+    }
+    .hero-orbit::before { left: 32px; top: 82px; }
+    .hero-orbit::after { right: 34px; bottom: 78px; }
+    @keyframes orbit { to { transform: rotate(360deg); } }
+    .hero-card {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 450px);
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      background: rgba(255,255,255,0.07);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+      backdrop-filter: blur(18px);
+    }
+    .hero-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px; }
+    .hero-card-label { color: #bdbdb4; font-size: 11px; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase; }
+    .signal-dots { display: flex; gap: 5px; }
+    .signal-dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.25); }
+    .signal-dots span:first-child { background: var(--yellow); }
+    .home-assistant-graphic {
+      position: relative;
+      height: 275px;
+      display: grid;
+      place-items: center;
+    }
+    .house-shell {
+      position: relative;
+      width: 190px;
+      height: 150px;
+      border: 2px solid rgba(255,255,255,0.64);
+      border-top: 0;
+      border-radius: 0 0 20px 20px;
+    }
+    .house-shell::before,
+    .house-shell::after {
+      content: "";
+      position: absolute;
+      top: -67px;
+      width: 134px;
+      height: 2px;
+      background: rgba(255,255,255,0.66);
+    }
+    .house-shell::before { left: -7px; transform: rotate(-30deg); transform-origin: right center; }
+    .house-shell::after { right: -7px; transform: rotate(30deg); transform-origin: left center; }
+    .house-door {
+      position: absolute;
+      left: 71px;
+      bottom: -2px;
+      width: 48px;
+      height: 76px;
+      border: 2px solid rgba(255,255,255,0.64);
+      border-bottom: 0;
+      border-radius: 14px 14px 0 0;
+    }
+    .house-door::after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      top: 35px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--yellow);
+    }
+    .message-node,
+    .phone-node,
+    .data-node {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.17);
+      background: #2b2b24;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+    }
+    .message-node { left: 20px; top: 18px; width: 72px; height: 72px; border-radius: 21px; }
+    .phone-node { right: 16px; top: 62px; width: 62px; height: 62px; border-radius: 50%; }
+    .data-node { right: 38px; bottom: 2px; width: 82px; height: 56px; border-radius: 17px; }
+    .message-node svg, .phone-node svg, .data-node svg { color: var(--yellow); }
+    .connection {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(247,201,72,0.1), rgba(247,201,72,0.95));
+      transform-origin: left center;
+    }
+    .connection.c1 { left: 81px; top: 77px; width: 122px; transform: rotate(25deg); }
+    .connection.c2 { left: 258px; top: 120px; width: 100px; transform: rotate(150deg); }
+    .connection.c3 { left: 244px; top: 250px; width: 86px; transform: rotate(197deg); }
+    .hero-card-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      margin-top: 8px;
+    }
+    .mini-kpi {
+      padding: 12px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.055);
+      text-align: center;
+    }
+    .mini-kpi strong { display: block; color: var(--yellow); font-size: 17px; line-height: 1.1; }
+    .mini-kpi span { color: #b9b9b1; font-size: 10px; line-height: 1.2; }
+
+    .section-heading {
+      max-width: 860px;
+      margin-bottom: 42px;
+    }
+    .section-kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 13px;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .section-kicker .num {
+      display: inline-grid;
+      width: 27px;
+      height: 27px;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--yellow-3);
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+    .section-heading h2 {
+      margin-bottom: 17px;
+      font-size: clamp(34px, 4.5vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+    .section-heading p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .dark .section-heading p { color: #bdbdb5; }
+    .dark .section-kicker { color: var(--yellow); }
+
+    .executive-hypothesis {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .hypothesis-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 310px;
+      padding: 42px;
+      border-radius: var(--radius-lg);
+      background: var(--ink);
+      color: #fff;
+      box-shadow: var(--shadow-md);
+    }
+    .hypothesis-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -80px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(247,201,72,0.32), transparent 64%);
+    }
+    .hypothesis-card .label { color: var(--yellow); font-size: 11px; font-weight: 850; letter-spacing: 0.14em; text-transform: uppercase; }
+    .hypothesis-card h3 {
+      position: relative;
+      z-index: 1;
+      max-width: 650px;
+      margin: 18px 0 18px;
+      font-size: clamp(29px, 3.5vw, 45px);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+    .hypothesis-card p { position: relative; z-index: 1; margin: 0; color: #c9c9c1; font-size: 17px; }
+    .evidence-panel {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .evidence-stat {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .evidence-stat strong {
+      display: block;
+      margin-bottom: 9px;
+      font-size: 36px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+    .evidence-stat span { color: var(--muted); font-size: 14px; }
+    .evidence-stat.wide { grid-column: 1 / -1; }
+    .evidence-stat.wide strong { font-size: 25px; }
+
+    .strength-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .strength-card,
+    .scope-card,
+    .metric-card,
+    .benchmark-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .strength-card { padding: 25px; }
+    .icon-box {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 13px;
+      background: var(--yellow-3);
+      color: var(--ink);
+    }
+    .strength-card h3 { margin-bottom: 9px; font-size: 18px; line-height: 1.25; }
+    .strength-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .strategic-question {
+      margin-top: 20px;
+      padding: 22px 26px;
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 14px 14px 0;
+      background: var(--yellow-3);
+      font-size: 17px;
+      font-weight: 660;
+    }
+
+    .mkt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .mkt-card { padding: 28px; border-radius: 20px; border: 1px solid var(--line); background: #fff; }
+    .mkt-card .mkt-big { font-size: 44px; font-weight: 800; letter-spacing: -.04em; line-height: 1; color: var(--ink); }
+    .mkt-card h3 { margin: 12px 0 9px; font-size: 17px; }
+    .mkt-card p { margin: 0; font-size: 13.5px; color: var(--muted); }
+    .mkt-read { margin-top: 22px; padding: 24px 26px; border-radius: 20px; background: var(--ink); color: rgba(255,255,255,.74); font-size: 14px; }
+    .mkt-read strong { color: #fff; }
+    .ref-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .ref-card { padding: 30px; border-radius: 20px; border: 1px solid var(--line); background: #fff; }
+    .ref-tagline { display: inline-flex; padding: 6px 10px; border-radius: 999px; background: var(--soft-yellow, #fff8e1); font-size: 10px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+    .ref-card h3 { margin: 16px 0 10px; font-size: 20px; }
+    .ref-card p { font-size: 13.5px; color: var(--muted); }
+    .ref-card ul { list-style: none; padding: 0; margin: 16px 0 0; }
+    .ref-card li { position: relative; padding-left: 19px; margin: 9px 0; font-size: 13px; color: var(--muted); }
+    .ref-card li::before { content: "✓"; position: absolute; left: 0; font-weight: 800; }
+    .ref-card a { font-size: 12.5px; font-weight: 700; }
+    .ref-caveat { margin-top: 22px; padding: 22px 24px; border-radius: 18px; border: 1px solid var(--line); background: #fff; font-size: 13.5px; color: var(--muted); }
+    .ref-caveat strong { color: var(--ink); }
+    @media (max-width: 900px) { .mkt-grid, .ref-grid { grid-template-columns: 1fr; } }
+    @media print { .mkt-card, .ref-card, .mkt-read, .ref-caveat { break-inside: avoid; } }
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .scope-card { padding: 28px; }
+    .scope-card .scope-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 17px;
+      font-size: 12px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .scope-card .scope-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    .scope-card.confirmed .scope-status { color: var(--green); }
+    .scope-card.partial .scope-status { color: var(--orange); }
+    .scope-card.client .scope-status { color: var(--purple); }
+    .scope-card h3 { margin-bottom: 12px; font-size: 22px; line-height: 1.18; }
+    .clean-list { margin: 0; padding: 0; list-style: none; }
+    .clean-list li {
+      position: relative;
+      padding: 8px 0 8px 22px;
+      border-top: 1px solid #eeece4;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .clean-list li:first-child { border-top: 0; }
+    .clean-list li::before { content: ""; position: absolute; left: 2px; top: 17px; width: 8px; height: 2px; background: var(--yellow); }
+    .scope-note {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border: 1px dashed #cbc6b7;
+      border-radius: 14px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.55);
+      font-size: 14px;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: -12px 0 24px;
+    }
+    .legend-item, .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 820;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .legend-item { padding: 7px 10px; background: var(--surface); border: 1px solid var(--line); }
+    .legend-item::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+    .legend-item.observed::before { background: var(--green); }
+    .legend-item.not-observed::before { background: var(--red); }
+    .legend-item.potential::before { background: var(--blue); }
+    .legend-item.validate::before { background: var(--orange); }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 18px 17px; text-align: left; vertical-align: top; border-bottom: 1px solid #e9e6de; }
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #f2f0e8;
+      color: #44443e;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: #fcfbf7; }
+    td:first-child { min-width: 170px; font-weight: 780; }
+    td:nth-child(2) { min-width: 138px; }
+    td:nth-child(3), td:nth-child(4) { min-width: 270px; color: var(--muted); font-size: 14px; }
+    .status-pill { padding: 6px 9px; }
+    .status-observed { color: var(--green); background: var(--green-bg); }
+    .status-not { color: var(--red); background: var(--red-bg); }
+    .status-potential { color: var(--blue); background: var(--blue-bg); }
+    .status-validate { color: var(--orange); background: var(--orange-bg); }
+    .table-footnote { margin: 16px 0 0; color: var(--muted); font-size: 13px; }
+
+    .journey-track {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 42px;
+    }
+    .journey-track::before {
+      content: "";
+      position: absolute;
+      left: 7%;
+      right: 7%;
+      top: 31px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--yellow), #d8d3c3 80%);
+    }
+    .journey-stage { position: relative; padding-top: 67px; }
+    .journey-dot {
+      position: absolute;
+      z-index: 2;
+      top: 15px;
+      left: 18px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 6px solid var(--paper);
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 850;
+      box-shadow: 0 0 0 1px #b8b4a6;
+    }
+    .journey-stage h3 { margin-bottom: 8px; font-size: 18px; line-height: 1.2; }
+    .journey-stage p { margin: 0; color: var(--muted); font-size: 14px; }
+    .uncertainty-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .uncertainty {
+      min-height: 125px;
+      padding: 18px;
+      border: 1px solid #e9d893;
+      border-radius: 15px;
+      background: var(--yellow-3);
+      font-size: 14px;
+      font-weight: 650;
+      line-height: 1.42;
+    }
+    .uncertainty span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--orange);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .missing-middle {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr 1fr;
+      gap: 0;
+      overflow: hidden;
+      margin-top: 48px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--surface);
+      box-shadow: var(--shadow-md);
+    }
+    .middle-block { position: relative; min-height: 300px; padding: 32px; }
+    .middle-block + .middle-block { border-left: 1px solid var(--line); }
+    .middle-block.center { background: linear-gradient(155deg, var(--yellow-3), #fff9e8); }
+    .middle-block .step-label { color: var(--muted-2); font-size: 10px; font-weight: 850; letter-spacing: 0.11em; text-transform: uppercase; }
+    .middle-block h3 { margin: 11px 0 12px; font-size: 26px; line-height: 1.15; letter-spacing: -0.025em; }
+    .middle-block p { color: var(--muted); font-size: 14px; }
+    .middle-block ul { margin: 16px 0 0; padding-left: 19px; color: var(--muted); font-size: 14px; }
+    .middle-arrow {
+      position: absolute;
+      right: -17px;
+      top: 50%;
+      z-index: 2;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+      transform: translateY(-50%);
+      box-shadow: var(--shadow-sm);
+    }
+    .question-callout {
+      margin-top: 20px;
+      padding: 24px 28px;
+      border-radius: 18px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 650;
+    }
+    .question-callout strong { color: var(--yellow); }
+
+    .voice-note {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 40px;
+      padding: 22px 26px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .voice-note .icon-box { margin: 0; }
+    .voice-note h3 { margin-bottom: 4px; font-size: 18px; }
+    .voice-note p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .benchmark-card { position: relative; padding: 25px; overflow: hidden; }
+    .benchmark-card.featured { border-color: #ddc66c; background: #fffaf0; }
+    .benchmark-card .platform { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .benchmark-card .platform strong { font-size: 20px; }
+    .benchmark-card .platform span { padding: 5px 8px; border-radius: 999px; background: #f0eee6; color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; }
+    .benchmark-card.featured .platform span { background: var(--yellow-2); color: var(--ink); }
+    .benchmark-card p { margin-bottom: 15px; color: var(--muted); font-size: 14px; }
+    .benchmark-card ul { margin: 0; padding: 0; list-style: none; }
+    .benchmark-card li { position: relative; padding: 7px 0 7px 18px; border-top: 1px solid #eeece5; color: #4f4f49; font-size: 13px; }
+    .benchmark-card li::before { content: "+"; position: absolute; left: 0; color: var(--orange); font-weight: 850; }
+    .benchmark-table td:first-child { font-weight: 780; }
+    .benchmark-table td:nth-child(2),
+    .benchmark-table td:nth-child(3),
+    .benchmark-table td:nth-child(4) { color: var(--muted); }
+    .benchmark-takeaway {
+      margin-top: 22px;
+      padding: 26px 30px;
+      border-radius: 20px;
+      background: var(--yellow-3);
+      font-size: 18px;
+      font-weight: 660;
+    }
+
+    .signal-chain {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 44px;
+    }
+    .signal-column {
+      position: relative;
+      min-height: 355px;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.055);
+    }
+    .signal-column:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -25px;
+      top: 50%;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 50%;
+      background: var(--ink);
+      transform: translateY(-50%);
+    }
+    .signal-column:not(:last-child)::before {
+      content: "\2192";
+      position: absolute;
+      z-index: 2;
+      right: -16px;
+      top: 50%;
+      color: var(--yellow);
+      transform: translateY(-52%);
+      font-weight: 850;
+    }
+    .signal-column .chain-label { color: var(--yellow); font-size: 11px; font-weight: 850; letter-spacing: 0.11em; text-transform: uppercase; }
+    .signal-column h3 { margin: 12px 0 18px; font-size: 26px; line-height: 1.15; }
+    .signal-column ul { margin: 0; padding: 0; list-style: none; }
+    .signal-column li { position: relative; padding: 10px 0 10px 21px; border-top: 1px solid rgba(255,255,255,0.08); color: #c8c8c0; font-size: 14px; }
+    .signal-column li:first-child { border-top: 0; }
+    .signal-column li::before { content: ""; position: absolute; left: 1px; top: 19px; width: 8px; height: 2px; background: var(--yellow); }
+    .root-cause {
+      margin-top: 20px;
+      padding: 23px 27px;
+      border: 1px solid rgba(247,201,72,0.35);
+      border-radius: 18px;
+      background: rgba(247,201,72,0.1);
+      color: #efefe8;
+      font-size: 17px;
+    }
+    .root-cause strong { color: var(--yellow); }
+
+    .north-star-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 46px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--surface);
+      box-shadow: var(--shadow-md);
+    }
+    .north-star-panel::before {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(247,201,72,0.28), transparent 68%);
+    }
+    .north-star-title { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 22px; align-items: start; margin-bottom: 36px; }
+    .north-star-title h3 { max-width: 760px; margin-bottom: 10px; font-size: clamp(30px, 4vw, 47px); line-height: 1.08; letter-spacing: -0.04em; }
+    .north-star-title p { max-width: 760px; margin: 0; color: var(--muted); font-size: 16px; }
+    .north-star-badge { padding: 10px 13px; border-radius: 999px; background: var(--yellow-3); color: var(--ink); font-size: 11px; font-weight: 850; text-transform: uppercase; }
+    .architecture {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .architecture::before {
+      content: "";
+      position: absolute;
+      left: 9%;
+      right: 9%;
+      top: 62px;
+      height: 2px;
+      background: #d8d4c7;
+    }
+    .arch-card {
+      position: relative;
+      z-index: 1;
+      min-height: 245px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+    .arch-card.emphasis { border-color: #dfc767; background: #fffbef; }
+    .arch-icon {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border: 6px solid #fff;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--yellow);
+      box-shadow: 0 0 0 1px #cfcabc;
+    }
+    .arch-card.emphasis .arch-icon { background: var(--yellow); color: var(--ink); }
+    .arch-card .num { color: var(--orange); font-size: 10px; font-weight: 850; letter-spacing: 0.11em; text-transform: uppercase; }
+    .arch-card h4 { margin: 6px 0 10px; font-size: 19px; line-height: 1.2; }
+    .arch-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .learning-loop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 25px;
+      padding: 15px 18px;
+      border-radius: 14px;
+      background: #f3f1e9;
+      color: #4a4a44;
+      font-size: 13px;
+      font-weight: 720;
+      text-align: center;
+    }
+    .learning-loop svg { color: var(--orange); }
+    .capability-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .capability-tag { padding: 7px 10px; border-radius: 999px; background: var(--purple-bg); color: var(--purple); font-size: 11px; font-weight: 780; }
+    .solution-note { margin-top: 14px; color: var(--muted); font-size: 12px; }
+
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .phase-card {
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .phase-card::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 5px; background: var(--yellow); }
+    .phase-card:nth-child(2)::before { background: var(--orange); }
+    .phase-card:nth-child(3)::before { background: var(--purple); }
+    .phase-card .phase { color: var(--muted-2); font-size: 10px; font-weight: 850; letter-spacing: 0.11em; text-transform: uppercase; }
+    .phase-card h3 { margin: 9px 0 10px; font-size: 25px; line-height: 1.14; }
+    .phase-card > p { color: var(--muted); font-size: 14px; }
+    .phase-card ul { margin: 18px 0 0; padding: 0; list-style: none; }
+    .phase-card li { position: relative; padding: 9px 0 9px 22px; border-top: 1px solid #ece9e0; color: #50504a; font-size: 14px; }
+    .phase-card li::before { content: "\2713"; position: absolute; left: 1px; color: var(--green); font-weight: 850; }
+    .phase-gate { margin-top: 17px; padding: 11px 13px; border-radius: 10px; background: #f3f1e9; color: var(--muted); font-size: 12px; font-weight: 720; }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .metric-card { padding: 22px; }
+    .metric-card .metric-num { color: var(--orange); font-size: 11px; font-weight: 850; letter-spacing: 0.1em; text-transform: uppercase; }
+    .metric-card h3 { margin: 9px 0 6px; font-size: 18px; line-height: 1.2; }
+    .metric-card p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .questions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--surface);
+      box-shadow: 0 5px 14px rgba(23,23,20,0.04);
+    }
+    summary {
+      position: relative;
+      padding: 20px 48px 20px 22px;
+      cursor: pointer;
+      list-style: none;
+      font-size: 15px;
+      font-weight: 720;
+      line-height: 1.4;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--yellow-3);
+      transform: translateY(-50%);
+      font-weight: 850;
+    }
+    details[open] summary::after { content: "-"; }
+    details p { margin: 0; padding: 0 22px 20px; color: var(--muted); font-size: 14px; }
+    .discovery-banner {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 26px;
+      padding: 24px 28px;
+      border-radius: 20px;
+      background: var(--ink);
+      color: #fff;
+    }
+    .discovery-banner strong { display: block; margin-bottom: 4px; color: var(--yellow); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .discovery-banner p { margin: 0; color: #c6c6be; font-size: 15px; }
+
+    .sources-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .sources-grid h3 { margin-bottom: 16px; font-size: 18px; }
+    .source-list { margin: 0; padding: 0; list-style: none; counter-reset: src; }
+    .source-list li {
+      counter-increment: src;
+      position: relative;
+      padding: 10px 0 10px 38px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .source-list li:first-child { border-top: 0; }
+    .source-list li::before {
+      content: counter(src);
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 23px;
+      height: 23px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      background: var(--yellow-3);
+      color: var(--ink);
+      font-size: 10px;
+      font-weight: 850;
+    }
+    .source-list a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .method-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+    }
+    .method-card p { color: var(--muted); font-size: 14px; }
+    .method-card p:last-child { margin-bottom: 0; }
+    .method-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 20px; }
+    .method-meta div { padding: 13px; border-radius: 11px; background: #f3f1e9; }
+    .method-meta strong { display: block; margin-bottom: 2px; font-size: 13px; }
+    .method-meta span { color: var(--muted); font-size: 11px; }
+
+    footer { padding: 34px 0 42px; border-top: 1px solid var(--line); background: #ece9df; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; align-items: center; color: var(--muted); font-size: 12px; }
+    .footer-mark { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 790; }
+    .footer-mark .dot { width: 9px; height: 9px; border-radius: 2px; background: var(--yellow); }
+
+    .back-to-top {
+      position: fixed;
+      z-index: 90;
+      right: 20px;
+      bottom: 20px;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--yellow);
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: 0.2s ease;
+    }
+    .back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+    [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    [data-reveal].revealed { opacity: 1; transform: none; }
+
+    @media (max-width: 1040px) {
+      .site-nav { display: none; position: absolute; left: 18px; right: 18px; top: 64px; padding: 12px; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; background: #20201b; box-shadow: var(--shadow-md); }
+      .site-nav.open { display: grid; grid-template-columns: repeat(2, 1fr); }
+      .menu-button { display: grid; }
+      .header-inner { min-height: 64px; }
+      .header-actions { margin-left: auto; }
+      .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+      .hero-copy { padding-top: 10px; }
+      .hero-visual { min-height: 420px; }
+      .hero-orbit { width: 360px; height: 360px; }
+      .executive-hypothesis { grid-template-columns: 1fr; }
+      .strength-grid { grid-template-columns: repeat(2, 1fr); }
+      .journey-track, .uncertainty-grid { grid-template-columns: repeat(3, 1fr); }
+      .journey-track::before { display: none; }
+      .journey-stage { padding-top: 54px; }
+      .journey-dot { top: 6px; }
+      .benchmark-grid { grid-template-columns: repeat(2, 1fr); }
+      .architecture { grid-template-columns: repeat(2, 1fr); }
+      .architecture::before { display: none; }
+      .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 760px) {
+      body { font-size: 15px; }
+      .section { padding: 76px 0; }
+      .hero { min-height: auto; }
+      .hero-grid { padding: 64px 0 68px; }
+      h1 { font-size: clamp(43px, 13vw, 63px); }
+      .hero-lede { font-size: 18px; }
+      .hero-visual { min-height: 375px; }
+      .hero-card { padding: 20px; }
+      .hero-orbit { width: 310px; height: 310px; }
+      .home-assistant-graphic { transform: scale(0.9); }
+      .header-button { display: none; }
+      .scope-grid,
+      .roadmap-grid,
+      .signal-chain,
+      .sources-grid,
+      .questions-grid { grid-template-columns: 1fr; }
+      .signal-column:not(:last-child)::after,
+      .signal-column:not(:last-child)::before { display: none; }
+      .missing-middle { grid-template-columns: 1fr; }
+      .middle-block + .middle-block { border-left: 0; border-top: 1px solid var(--line); }
+      .middle-arrow { right: 50%; top: auto; bottom: -17px; transform: translateX(50%) rotate(90deg); }
+      .journey-track, .uncertainty-grid { grid-template-columns: 1fr; }
+      .journey-stage { padding: 0 0 0 58px; min-height: 82px; }
+      .journey-dot { top: 0; left: 0; }
+      .benchmark-grid,
+      .strength-grid,
+      .architecture,
+      .metric-grid { grid-template-columns: 1fr; }
+      .north-star-panel { padding: 28px 22px; }
+      .north-star-title { grid-template-columns: 1fr; }
+      .north-star-badge { justify-self: start; }
+      .hypothesis-card { padding: 30px; }
+      .evidence-panel { grid-template-columns: 1fr; }
+      .evidence-stat.wide { grid-column: auto; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .table-wrap { margin-right: -18px; border-radius: 18px 0 0 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 14mm; }
+      body { background: #fff; color: #111; font-size: 10pt; }
+      .site-header, .scroll-progress, .back-to-top, .hero-orbit, .menu-button { display: none !important; }
+      .container { width: 100%; }
+      .section { padding: 18mm 0 8mm; page-break-inside: auto; }
+      .hero { min-height: auto; background: #171714 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .hero-grid { grid-template-columns: 1fr; padding: 18mm 0; }
+      .hero-visual { display: none; }
+      h1 { font-size: 33pt; }
+      .section-heading h2 { font-size: 25pt; }
+      .strength-card, .scope-card, .metric-card, .benchmark-card, .phase-card, .arch-card, details, .table-wrap, .hypothesis-card, .evidence-stat, .north-star-panel, .voice-note { break-inside: avoid; box-shadow: none; }
+      .table-wrap { overflow: visible; }
+      table { font-size: 8pt; }
+      th, td { padding: 7px; }
+      details[open] p, details p { display: block; }
+      details { break-inside: avoid; }
+      summary::after { display: none; }
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+      a { text-decoration: none; }
+      footer { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Ir al contenido</a>
+<div aria-hidden="true" class="scroll-progress" id="scrollProgress"></div>
+<header class="site-header">
+<div class="header-inner">
+<a aria-label="Inicio del diagnóstico de CX de HelpScore" class="brand" href="#top">
+<span aria-hidden="true" class="pixel-mark">
+<span></span><span></span><span></span>
+<span></span><span></span><span></span>
+<span></span><span></span><span></span>
+</span>
+<span><small>PGM</small>Help<span class="brand-score">Score</span></span>
+</a>
+<nav aria-label="Secciones de la página" class="site-nav" id="siteNav">
+<a href="#context">Contexto</a>
+<a href="#safari">Safari de CX</a>
+<a href="#journey">Recorrido</a>
+<a href="#benchmark">Comparativo</a>
+<a href="#mercado">Consumidor</a>
+<a href="#referencias">Referencias</a>
+<a href="#north-star">Visión objetivo</a>
+<a href="#roadmap">Hoja de ruta</a>
+<a href="#discovery">Descubrimiento</a>
+</nav>
+<div class="header-actions">
+<button class="header-button" id="printButton" type="button">Imprimir / PDF</button>
+<button aria-expanded="false" aria-label="Abrir menú" class="menu-button" id="menuButton" type="button">
+<svg aria-hidden="true" fill="none" height="20" viewbox="0 0 24 24" width="20">
+<path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="hero" id="top">
+<div class="container hero-grid">
+<div class="hero-copy" data-reveal="">
+<div class="eyebrow">Diagnóstico de CX orientado al cliente · predescubrimiento público</div>
+<h1>Llevar la promesa del Asistente del Hogar a un <span class="accent">recorrido digital conectado.</span></h1>
+<p class="hero-lede">Una visión consultiva de cómo HelpScore puede facilitar que los propietarios con alta intención lleguen a la persona adecuada, en el momento oportuno y sin perder el contexto de su proyecto.</p>
+<div aria-label="Temas del diagnóstico" class="hero-chips">
+<span class="hero-chip">Servicio con prioridad humana</span>
+<span class="hero-chip">Puntos de entrada digitales</span>
+<span class="hero-chip">Calificación del proyecto</span>
+<span class="hero-chip">Continuidad del contexto</span>
+<span class="hero-chip">Crecimiento escalable</span>
+</div>
+<div class="hero-note">
+<svg aria-hidden="true" fill="none" height="18" viewbox="0 0 24 24" width="18">
+<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"></circle>
+<path d="M12 10v6M12 7h.01" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+<span>Basado en recorridos públicos del sitio web, un envío real de la solicitud de proyecto, una llamada al número publicado, materiales corporativos y un comparativo ligero de la categoría. Su propósito es generar preguntas de descubrimiento, no calificar la calidad del servicio ni inferir el desempeño interno.</span>
+</div>
+</div>
+<div aria-hidden="true" class="hero-visual" data-reveal="">
+<div class="hero-orbit"></div>
+<div class="hero-card">
+<div class="hero-card-top">
+<span class="hero-card-label">Continuidad de lo digital a lo humano</span>
+<span class="signal-dots"><span></span><span></span><span></span></span>
+</div>
+<div class="home-assistant-graphic">
+<div class="connection c1"></div>
+<div class="connection c2"></div>
+<div class="connection c3"></div>
+<div class="message-node">
+<svg fill="none" height="30" viewbox="0 0 24 24" width="30">
+<path d="M5 6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v5A2.5 2.5 0 0 1 16.5 14H10l-4.5 4V14A2.5 2.5 0 0 1 3 11.5v-5Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"></path>
+<path d="M8 9h8" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path>
+</svg>
+</div>
+<div class="phone-node">
+<svg fill="none" height="26" viewbox="0 0 24 24" width="26">
+<path d="M7.1 3.5 9.5 7.7 7.8 9.3c.9 2.1 2.8 4 4.9 4.9l1.6-1.7 4.2 2.4-.8 4c-.1.6-.7 1.1-1.4 1.1C9.5 20 4 14.5 4 7.7c0-.7.5-1.3 1.1-1.4l2-.4Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"></path>
+</svg>
+</div>
+<div class="data-node">
+<svg fill="none" height="29" viewbox="0 0 24 24" width="29">
+<path d="M5 6.5h14M5 11.5h9M5 16.5h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+<circle cx="17.5" cy="16.5" r="2.5" stroke="currentColor" stroke-width="1.5"></circle>
+</svg>
+</div>
+<div class="house-shell"><div class="house-door"></div></div>
+</div>
+<div class="hero-card-bottom">
+<div class="mini-kpi"><strong>2</strong><span>formas públicas de iniciar</span></div>
+<div class="mini-kpi"><strong>6</strong><span>campos obligatorios</span></div>
+<div class="mini-kpi"><strong>7-4</strong><span>atención en vivo entre semana (PT)</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section white" id="context">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">01</span> Hipótesis ejecutiva</div>
+<h2>La oportunidad no es reemplazar al Asistente del Hogar, sino extender ese valor humano a los momentos previos y posteriores a cada conversación.</h2>
+<p>HelpScore ya comunica una promesa clara y tranquilizadora. La pregunta de diagnóstico es si el recorrido público de entrada hace que esa promesa sea igual de accesible para todos los propietarios, incluidos quienes aún no están listos para llamar, llegan fuera del horario de atención o dudan mientras completan el formulario.</p>
+</div>
+<div class="executive-hypothesis">
+<article class="hypothesis-card" data-reveal="">
+<span class="label">Hipótesis de trabajo</span>
+<h3>Algunos propietarios con alta intención podrían perderse en la brecha entre el interés por el proyecto y la atención humana.</h3>
+<p>Esta es una pregunta de medición, no una conclusión. El recorrido probado confirma dos cosas: llegar a una persona por teléfono es rápido y sin menús, y el formulario sí acusa recibo. Lo que queda abierto es lo que pasa en medio, cuando el propietario no quiere llamar todavía, llega fuera de horario o ya envió su solicitud y espera sin saber cuándo. El impacto de negocio solo puede confirmarse con datos de HelpScore sobre conversión, respuesta, enrutamiento y carga de trabajo.</p>
+</article>
+<div class="evidence-panel" data-reveal="">
+<article class="evidence-stat">
+<strong>2</strong>
+<span>Formas visibles de iniciar: llamar a un representante o enviar la solicitud de proyecto en línea.</span>
+</article>
+<article class="evidence-stat">
+<strong>6</strong>
+<span>Datos obligatorios: tipo de proyecto, nombre, apellido, código postal, correo electrónico y teléfono.</span>
+</article>
+<article class="evidence-stat wide">
+<strong>Lun-vie · 7:00 a. m. – 4:00 p. m. PT</strong>
+<span>Disponibilidad publicada de representantes. Dentro de ese horario, la llamada llega a una persona sin menús. Fuera de horario, el formulario es la ruta pública visible y no se observó programación de devolución de llamada.</span>
+</article>
+</div>
+</div>
+<div class="strength-grid">
+<article class="strength-card" data-reveal="">
+<div class="icon-box">
+<svg aria-hidden="true" fill="none" height="22" viewbox="0 0 24 24" width="22">
+<path d="M8 10a4 4 0 1 1 8 0v2a4 4 0 0 1-8 0v-2Z" stroke="currentColor" stroke-width="1.7"></path>
+<path d="M4.5 20c.7-3 3.4-5 7.5-5s6.8 2 7.5 5" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path>
+</svg>
+</div>
+<h3>Diferenciación humana</h3>
+<p>Un Asistente del Hogar personal representa una propuesta de confianza valiosa en una categoría donde los proyectos suelen comenzar con incertidumbre.</p>
+</article>
+<article class="strength-card" data-reveal="">
+<div class="icon-box">
+<svg aria-hidden="true" fill="none" height="22" viewbox="0 0 24 24" width="22">
+<path d="m4 12 5 5L20 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path>
+</svg>
+</div>
+<h3>Resultado claro</h3>
+<p>El recorrido público comunica un resultado sencillo: entender el proyecto, conectar al propietario con un profesional local calificado y aclarar los siguientes pasos.</p>
+</article>
+<article class="strength-card" data-reveal="">
+<div class="icon-box">
+<svg aria-hidden="true" fill="none" height="22" viewbox="0 0 24 24" width="22">
+<rect height="18" rx="2" stroke="currentColor" stroke-width="1.7" width="14" x="5" y="3"></rect>
+<path d="M8.5 8h7M8.5 12h7M8.5 16h4" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path>
+</svg>
+</div>
+<h3>Calificación estructurada</h3>
+<p>El formulario captura los datos mínimos de identidad, ubicación y categoría del proyecto necesarios para iniciar la asignación y el seguimiento.</p>
+</article>
+<article class="strength-card" data-reveal="">
+<div class="icon-box">
+<svg aria-hidden="true" fill="none" height="22" viewbox="0 0 24 24" width="22">
+<circle cx="6" cy="12" r="2" stroke="currentColor" stroke-width="1.7"></circle>
+<circle cx="18" cy="6" r="2" stroke="currentColor" stroke-width="1.7"></circle>
+<circle cx="18" cy="18" r="2" stroke="currentColor" stroke-width="1.7"></circle>
+<path d="m8 11 8-4M8 13l8 4" stroke="currentColor" stroke-width="1.7"></path>
+</svg>
+</div>
+<h3>Ecosistema enriquecido por datos</h3>
+<p>PGM y Porch destacan públicamente su inteligencia sobre hogares, consumidores y señales de intención de compra. Esto crea un puente estratégico natural entre el conocimiento de la audiencia y la relevancia del recorrido.</p>
+</article>
+</div>
+<div class="strategic-question" data-reveal="">Pregunta estratégica: ¿puede aplicarse la misma lógica de relevancia y oportunidad utilizada para entender a los propietarios cuando una persona llega a HelpScore y necesita asistencia?</div>
+</div>
+</section>
+<section class="section soft" id="scope">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">02</span> Alcance de la evidencia</div>
+<h2>La capa pública está documentada. La capa operativa todavía debe validarse en el descubrimiento.</h2>
+<p>Un diagnóstico preparado para el cliente debe distinguir con claridad qué se observó, qué no fue visible y qué no puede conocerse sin datos de HelpScore o entrevistas con sus equipos.</p>
+</div>
+<div class="scope-grid">
+<article class="scope-card confirmed" data-reveal="">
+<div class="scope-status">Observado públicamente</div>
+<h3>Evidencia disponible hoy</h3>
+<ul class="clean-list">
+<li>Página principal y recorrido de “Get Started”</li>
+<li>Llamada y solicitud en línea como rutas principales de entrada</li>
+<li>Número telefónico y horario de representantes publicados</li>
+<li>Campos obligatorios del proyecto y de contacto</li>
+<li>Presencia o ausencia visible de canales públicos</li>
+<li><strong>Envío real del formulario y la confirmación recibida</strong></li>
+<li><strong>Llamada dentro del horario publicado: sin IVR, grabación y representante</strong></li>
+<li><strong>Abandono del formulario y regreso al sitio, sin intervención observada</strong></li>
+<li>Materiales de PGM, Porch y de la categoría</li>
+</ul>
+</article>
+<article class="scope-card partial" data-reveal="">
+<div class="scope-status">No visible públicamente</div>
+<h3>Preguntas que la interfaz no puede responder</h3>
+<ul class="clean-list">
+<li>Qué plazo, folio o responsable acompaña a la confirmación</li>
+<li>Si el contexto del formulario continúa en una llamada o mensaje de texto</li>
+<li>Qué ocurre al llamar fuera del horario publicado</li>
+<li>Cómo se asignan, enrutan o priorizan los proyectos</li>
+<li>Si SMS es solo de salida o funciona en ambos sentidos</li>
+<li>Si existen experiencias personalizadas o activadas en momentos específicos</li>
+<li>Qué plataforma de centro de contacto o CRM se utiliza</li>
+</ul>
+</article>
+<article class="scope-card client" data-reveal="">
+<div class="scope-status">Requiere validación con HelpScore</div>
+<h3>Datos que solo HelpScore puede aportar</h3>
+<ul class="clean-list">
+<li>Tráfico, finalización y abandono del formulario</li>
+<li>Conversión de proyecto a asistente y de asistente a profesional</li>
+<li>Demanda fuera de horario y tiempo hasta la primera respuesta</li>
+<li>Recontactos, transferencias y cambios de canal</li>
+<li>Carga de trabajo del Asistente del Hogar y costo de atención</li>
+<li>CSAT, motivos de queja y prioridades de negocio</li>
+</ul>
+</article>
+</div>
+<div class="scope-note" data-reveal=""><strong>Regla metodológica:</strong> “No observado” significa que la capacidad no apareció en el recorrido accesible públicamente al momento de la revisión. No demuestra que esté ausente de todas las páginas, segmentos de visitantes, campañas o flujos internos. El recorrido de campo es exploratorio: un envío de formulario y una llamada dentro del horario publicado, el 4 de septiembre de 2026. Sirve para precisar preguntas, no para medir desempeño ni niveles de servicio.</div>
+</div>
+</section>
+<section class="section white" id="safari">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">03</span> Safari público de CX</div>
+<h2>El recorrido visible ofrece acceso humano, pero pocas alternativas conversacionales antes de la transferencia.</h2>
+<p>La tabla conserva el detalle útil de la investigación y lo presenta desde una perspectiva adecuada para el cliente: qué puede ver el propietario, qué podría significar y qué conviene validar después.</p>
+</div>
+<div aria-label="Leyenda de estados" class="legend" data-reveal="">
+<span class="legend-item observed">Observado</span>
+<span class="legend-item not-observed">No observado públicamente</span>
+<span class="legend-item potential">Potencial / capturado</span>
+<span class="legend-item validate">Validar internamente</span>
+</div>
+<div class="table-wrap" data-reveal="">
+<table>
+<thead>
+<tr>
+<th>Canal / capacidad</th>
+<th>Estado público</th>
+<th>Perspectiva del cliente</th>
+<th>Validación u oportunidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voz / teléfono</td>
+<td><span class="status-pill status-observed">Probado n=1</span></td>
+<td>Se publica un número de HelpScore, con representantes de lunes a viernes de 7:00 a. m. a 4:00 p. m. PT. En la llamada dentro de horario no hubo IVR ni menú de opciones: una grabación breve y enseguida un representante. La ruta a una persona es corta y directa, coherente con la promesa de prioridad humana.</td>
+<td>Queda por documentar la atención fuera de horario, las opciones de devolución de llamada y si el representante puede ver una solicitud enviada minutos antes.</td>
+</tr>
+<tr>
+<td>Formulario de solicitud de proyecto</td>
+<td><span class="status-pill status-observed">Probado n=1</span></td>
+<td>El formulario captura tipo de proyecto, nombre, apellido, código postal, correo y teléfono. Al enviarlo aparece una página de agradecimiento con marca que confirma la recepción e indica que un representante se pondrá en contacto lo antes posible. El acuse existe; lo que no aparece es el plazo, el folio, el responsable ni el canal por el que llegará el seguimiento.</td>
+<td>Medir finalización y abandono, tiempo real hasta la primera respuesta, responsable asignado y si el contexto capturado acompaña al cliente en la llamada o el mensaje posterior.</td>
+</tr>
+<tr>
+<td>Mensajería web / chat en vivo</td>
+<td><span class="status-pill status-not">No observado</span></td>
+<td>Un propietario que navega no encuentra una forma evidente de hacer una pregunta rápida sin llamar o completar el formulario.</td>
+<td>Evaluar si un Asistente Digital del Hogar conversacional podría responder, calificar o escalar la interacción en ese momento.</td>
+</tr>
+<tr>
+<td>Agente Virtual / autoservicio guiado</td>
+<td><span class="status-pill status-not">No observado</span></td>
+<td>Las preguntas habituales sobre tipo de proyecto, zona de servicio, proceso o siguientes pasos parecen depender de una persona o del seguimiento al formulario.</td>
+<td>Priorizar únicamente las intenciones repetitivas que aumenten la confianza y preparen mejor la conversación humana.</td>
+</tr>
+<tr>
+<td>Interacción proactiva / predictiva</td>
+<td><span class="status-pill status-not">Abandono probado</span></td>
+<td>Se probó salir del formulario y regresar sin completarlo. No apareció ninguna intervención: sin mensaje de salida, sin opción de guardar el avance, sin oferta de devolución de llamada y sin ruta alternativa. Los elementos de llamada a la acción del sitio conducen al formulario o revelan el número, y no se observó una capa que reaccione al comportamiento del visitante.</td>
+<td>Confirmar si existe recuperación posterior por correo o remarketing, que un solo recorrido no permite descartar, y decidir qué comportamientos de alta intención justifican una asistencia oportuna.</td>
+</tr>
+<tr>
+<td>Programación de devolución de llamada</td>
+<td><span class="status-pill status-not">No observado</span></td>
+<td>El propietario parece tener que elegir entre llamar durante el horario publicado o enviar la solicitud.</td>
+<td>Evaluar devolución de llamada en cola o programada para clientes que desean hablar con una persona, pero no pueden esperar en línea.</td>
+</tr>
+<tr>
+<td>SMS</td>
+<td><span class="status-pill status-potential">Consentimiento capturado</span></td>
+<td>El formulario autoriza llamadas y mensajes de texto, incluida tecnología automatizada, pero no queda claro públicamente si existe un recorrido de servicio bidireccional.</td>
+<td>Confirmar si SMS se usa solo para seguimiento saliente de prospectos o como un canal bidireccional persistente vinculado al mismo historial del proyecto.</td>
+</tr>
+<tr>
+<td>Correo electrónico</td>
+<td><span class="status-pill status-potential">Capturado</span></td>
+<td>El correo electrónico es obligatorio en el formulario, pero no se encontró un correo de soporte destacado en el recorrido del consumidor.</td>
+<td>Entender cómo se enruta y mide el seguimiento por correo, y cómo se conecta con llamadas, mensajes y el registro del proyecto.</td>
+</tr>
+<tr>
+<td>Preguntas frecuentes / conocimiento</td>
+<td><span class="status-pill status-not">No observado</span></td>
+<td>El sitio comunica la propuesta y el proceso de tres pasos, y de ahí conduce al formulario o al teléfono. En el recorrido revisado no apareció un centro de ayuda, contenido por tipo de proyecto, orientación de costos ni una capa conversacional de preguntas frecuentes. Un propietario que aún no sabe qué necesita tiene poco con qué avanzar por su cuenta.</td>
+<td>Confirmar qué contenido de apoyo ya existe en el ecosistema del grupo y podría activarse en el recorrido de HelpScore, y centralizar respuestas reutilizables para el sitio, la asistencia virtual y los Asistentes del Hogar.</td>
+</tr>
+<tr>
+<td>Cuenta / historial del proyecto</td>
+<td><span class="status-pill status-not">No observado</span></td>
+<td>En las páginas revisadas no apareció un inicio de sesión, perfil, historial del proyecto o recorrido de estatus público.</td>
+<td>Considerar un contexto persistente como oportunidad de largo plazo si los proyectos recurrentes o su seguimiento lo requieren.</td>
+</tr>
+<tr>
+<td>Redes sociales / WhatsApp</td>
+<td><span class="status-pill status-not">No observado</span></td>
+<td>No apareció una ruta de soporte por redes sociales o WhatsApp. Para una audiencia en Estados Unidos, podría tener menor prioridad que la web, SMS y devolución de llamada.</td>
+<td>Permitir que la demanda del cliente y la economía de cada canal definan la prioridad, en lugar de agregar canales solo por agregarlos.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="table-footnote" data-reveal="">El comercio electrónico tradicional no es el marco adecuado: HelpScore conecta propietarios con profesionales, por lo que el inicio del proyecto y el abandono del formulario son más relevantes que el abandono del carrito.</p>
+</div>
+</section>
+<section class="section soft" id="journey">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">04</span> Recorrido del propietario</div>
+<h2>El recorrido comienza con una pregunta, no con un proyecto perfectamente definido.</h2>
+<p>Un propietario puede saber qué problema tiene sin conocer la categoría, la urgencia, el costo o el profesional adecuado. La experiencia es más sólida cuando la guía digital prepara la conversación con el Asistente del Hogar, en lugar de obligar al cliente a comenzar de nuevo.</p>
+</div>
+<div class="journey-track" data-reveal="">
+<article class="journey-stage">
+<span class="journey-dot">1</span>
+<h3>Reconocer una necesidad</h3>
+<p>Una reparación, tarea de mantenimiento o renovación comienza como un problema, una idea o una inquietud.</p>
+</article>
+<article class="journey-stage">
+<span class="journey-dot">2</span>
+<h3>Explorar HelpScore</h3>
+<p>El sitio explica la orientación personal, los profesionales calificados y un proceso sencillo de tres pasos.</p>
+</article>
+<article class="journey-stage">
+<span class="journey-dot">3</span>
+<h3>Iniciar el proyecto</h3>
+<p>El propietario llama durante el horario publicado o completa la solicitud de seis campos.</p>
+</article>
+<article class="journey-stage">
+<span class="journey-dot">4</span>
+<h3>Entender y conectar</h3>
+<p>Un Asistente del Hogar entiende la solicitud y conecta al propietario con el profesional local adecuado.</p>
+</article>
+<article class="journey-stage">
+<span class="journey-dot">5</span>
+<h3>Avanzar</h3>
+<p>El propietario necesita claridad sobre los siguientes pasos, los tiempos, el soporte y quién es responsable de la relación.</p>
+</article>
+</div>
+<div class="uncertainty-grid" data-reveal="">
+<div class="uncertainty"><span>Posible pregunta</span>¿Qué tipo de profesional necesito realmente?</div>
+<div class="uncertainty"><span>Posible pregunta</span>¿Puedo hacer una pregunta rápida antes de compartir todos mis datos de contacto?</div>
+<div class="uncertainty"><span>Posible pregunta</span>¿Qué ocurre si llego fuera del horario de atención de los representantes?</div>
+<div class="uncertainty"><span>Posible pregunta</span>¿El asistente podrá ver lo que ya capturé y consulté?</div>
+<div class="uncertainty"><span>Observado</span>La confirmación dice que un representante contactará al propietario lo antes posible, sin indicar plazo, responsable ni canal.</div>
+</div>
+<div class="missing-middle" data-reveal="">
+<article class="middle-block">
+<span class="step-label">Alta intención</span>
+<h3>Un propietario está listo para avanzar</h3>
+<p>Es posible que ya haya revisado un tipo de proyecto, comparado opciones o decidido que necesita ayuda profesional.</p>
+<ul>
+<li>Necesidad real</li>
+<li>Alcance poco claro</li>
+<li>Sensibilidad al tiempo</li>
+</ul>
+<span aria-hidden="true" class="middle-arrow">→</span>
+</article>
+<article class="middle-block center">
+<span class="step-label">La brecha intermedia</span>
+<h3>Llamar ahora, completar el formulario o abandonar</h3>
+<p>Las dos rutas funcionan y llevan a una persona. Lo que no existe entre ellas es una alternativa intermedia: los elementos de llamada a la acción del sitio conducen al formulario o revelan el número, y no se observó orientación conversacional, devolución de llamada programada ni asistencia activada por el comportamiento.</p>
+<ul>
+<li>Pregunta antes de compartir seis datos</li>
+<li>Llegada fuera del horario publicado</li>
+<li>Espera sin plazo después de enviar</li>
+<li>Abandono sin recuperación</li>
+</ul>
+<span aria-hidden="true" class="middle-arrow">→</span>
+</article>
+<article class="middle-block">
+<span class="step-label">Valor humano</span>
+<h3>El Asistente del Hogar genera confianza</h3>
+<p>Una vez conectado, HelpScore puede entender el proyecto, explicar los siguientes pasos y vincular al propietario con un profesional calificado.</p>
+<ul>
+<li>Orientación personal</li>
+<li>Profesional adecuado</li>
+<li>Siguiente paso más claro</li>
+</ul>
+</article>
+</div>
+<div class="question-callout" data-reveal=""><strong>Mejor pregunta ejecutiva de descubrimiento:</strong> De los propietarios que comienzan el recorrido de HelpScore, ¿qué porcentaje habla con un Asistente del Hogar o envía la solicitud, y qué ocurre con todos los que quedan en medio?</div>
+</div>
+</section>
+<section class="section white" id="benchmark">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">05</span> Benchmark de la categoría</div>
+<h2>Las experiencias de servicios para el hogar avanzan hacia una asistencia digital guiada y con continuidad.</h2>
+<p>Este comparativo ligero revisa únicamente patrones de interfaz pública. No es un ranking, no se realizó una evaluación como cliente incógnito a los competidores y no compara calidad de servicio, conversión ni desempeño operativo.</p>
+</div>
+<div class="voice-note" data-reveal="">
+<div class="icon-box">
+<svg aria-hidden="true" fill="none" height="22" viewbox="0 0 24 24" width="22">
+<path d="M4 18.5V7.2C4 6 5 5 6.2 5h11.6C19 5 20 6 20 7.2v7.6c0 1.2-1 2.2-2.2 2.2H9l-5 3.5v-2Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"></path>
+</svg>
+</div>
+<div>
+<h3>Por qué este diagnóstico no incluye una calificación pública de sentimiento</h3>
+<p>No se encontró un volumen actual y suficientemente confiable de reseñas específicas de HelpScore para caracterizar un sentimiento positivo o negativo. Por ello, el análisis se apoya en la arquitectura observable del recorrido y no en anécdotas de reseñas.</p>
+</div>
+</div>
+<div class="benchmark-grid">
+<article class="benchmark-card featured" data-reveal="">
+<div class="platform"><strong>HelpScore</strong><span>Prioridad humana</span></div>
+<p>Un Asistente del Hogar personal ayuda a definir el proyecto y conecta al propietario con profesionales locales calificados.</p>
+<ul>
+<li>Llamada o solicitud en línea para iniciar</li>
+<li>Captura estructurada del proyecto y contacto</li>
+<li>Orientación humana como diferenciador</li>
+</ul>
+</article>
+<article class="benchmark-card" data-reveal="">
+<div class="platform"><strong>Angi</strong><span>Opciones según el recorrido</span></div>
+<p>La experiencia pública combina reserva inmediata y precios visibles para ciertos servicios con solicitudes de cotización para proyectos más grandes.</p>
+<ul>
+<li>Reserva inmediata para algunos servicios</li>
+<li>Solicitar y comparar cotizaciones</li>
+<li>Centro de ayuda público y soporte telefónico</li>
+</ul>
+</article>
+<article class="benchmark-card" data-reveal="">
+<div class="platform"><strong>Thumbtack</strong><span>Proyecto con continuidad</span></div>
+<p>Los propietarios pueden explorar, enviar mensajes a profesionales y reservar desde la aplicación; durante 2026 se está introduciendo una nueva captura guiada por IA.</p>
+<ul>
+<li>Conversar con profesionales antes de contratar</li>
+<li>Describir problemas con texto, fotos o voz</li>
+<li>Centro del proyecto y resúmenes de conversación</li>
+</ul>
+</article>
+<article class="benchmark-card" data-reveal="">
+<div class="platform"><strong>Frontdoor</strong><span>Experto en pantalla</span></div>
+<p>Un modelo centrado en la aplicación comienza con ayuda por video en vivo de expertos en reparaciones del hogar y puede conectar al cliente con profesionales locales.</p>
+<ul>
+<li>Videochat con expertos en tiempo real</li>
+<li>Orientación antes de una visita presencial</li>
+<li>Acceso a profesionales locales y reservas seleccionadas</li>
+</ul>
+</article>
+</div>
+<div class="table-wrap benchmark-table" data-reveal="">
+<table>
+<thead>
+<tr>
+<th>Patrón público</th>
+<th>Cómo se presenta</th>
+<th>Mecanismo de continuidad</th>
+<th>Implicación consultiva para HelpScore</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HelpScore</td>
+<td>Llamada o solicitud de proyecto de seis campos</td>
+<td>Asistente del Hogar humano</td>
+<td>Proteger la diferenciación humana y, al mismo tiempo, ampliar el puente digital hacia ella.</td>
+</tr>
+<tr>
+<td>Angi</td>
+<td>Reserva inmediata para ciertos servicios; cotización para otros</td>
+<td>Cuenta, contenido de ayuda y soporte de servicio</td>
+<td>Distintos tipos de proyecto pueden justificar diferentes niveles de automatización y asistencia.</td>
+</tr>
+<tr>
+<td>Thumbtack</td>
+<td>Explorar, conversar, contratar y reservar; captura guiada por IA en evolución</td>
+<td>Centro del proyecto, mensajería y resúmenes</td>
+<td>El contexto puede mantenerse desde una descripción vaga del problema hasta la selección del profesional.</td>
+</tr>
+<tr>
+<td>Frontdoor</td>
+<td>Video en vivo con un experto desde la aplicación, antes o en lugar de una visita</td>
+<td>Sesión con experto y recorrido en la aplicación</td>
+<td>La experiencia humana puede comenzar digitalmente sin sentirse automatizada o impersonal.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="benchmark-takeaway" data-reveal="">HelpScore no necesita copiar una plataforma digital centrada en una aplicación. Su oportunidad distintiva es hacer que el Asistente del Hogar sea más fácil de contactar, llegue mejor preparado y esté disponible en momentos más flexibles del recorrido.</div>
+</div>
+</section>
+<section class="section soft" id="mercado">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">06</span> Contexto del consumidor</div>
+<h2>La investigación del sector no dice “automatiza”. Dice que el autoservicio casi nunca resuelve solo y que el teléfono sigue mandando.</h2>
+<p>Estas cifras son de servicio al consumidor, no de compra B2B, y conviene leerlas como un límite antes que como una oportunidad: describen por qué agregar un bot rara vez alcanza y por qué la ventaja de HelpScore está en preparar la conversación humana, no en sustituirla.</p>
+</div>
+<div class="mkt-grid">
+<article class="mkt-card" data-reveal="">
+<div class="mkt-big">14%</div>
+<h3>de los casos se resuelven por completo en autoservicio</h3>
+<p>Gartner encuestó a 5,728 clientes: aun en los casos que las personas describen como muy simples, solo 36% se resuelve del todo sin ayuda. Y 73% usa autoservicio en algún punto del recorrido.</p>
+</article>
+<article class="mkt-card" data-reveal="">
+<div class="mkt-big">35%</div>
+<h3>de quienes vienen del teléfono aceptaría un asistente digital</h3>
+<p>En otra encuesta de Gartner a 5,801 clientes, una buena experiencia telefónica reduce la disposición a usar un asistente con IA generativa. El teléfono sigue siendo el canal dominante.</p>
+</article>
+<article class="mkt-card" data-reveal="">
+<div class="mkt-big">2027</div>
+<h3>año en que lo digital superaría al teléfono y el correo</h3>
+<p>Gartner proyecta que el chat en vivo, los portales de autoservicio y la gestión del conocimiento pasarán a ser las tecnologías más valiosas para los líderes de servicio. La dirección es clara; el ritmo lo define cada operación.</p>
+</article>
+</div>
+<div class="mkt-read" data-reveal=""><strong>Lectura para HelpScore:</strong> las tres cifras apuntan al mismo lugar. El autoservicio falla cuando intenta cerrar el caso solo, y la gente que ya tuvo una buena llamada se resiste a cambiarla por un bot. HelpScore tiene lo segundo resuelto: la ruta al teléfono es corta y sin menús. La oportunidad no es reemplazar esa llamada, sino que el propietario que aún no quiere llamar, o que llega fuera de horario, tenga a dónde ir; y que cuando llame, la conversación empiece con contexto y no desde cero. La recomendación de Gartner apunta en esa dirección: simplificar la ruta de resolución con una sola entrada digital que oriente y escale, en lugar de sumar canales.</div>
+</div>
+</section>
+<section class="section dark" id="signals">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">07</span> De la señal al impacto de negocio</div>
+<h2>Separar lo visible de lo que podría estar ocurriendo en la operación.</h2>
+<p>La interfaz pública ofrece señales iniciales. El descubrimiento debe comprobar si esas señales generan fricción intermedia y, finalmente, consecuencias medibles en conversión, capacidad de respuesta o costo.</p>
+</div>
+<div class="signal-chain">
+<article class="signal-column" data-reveal="">
+<span class="chain-label">Señal inicial · observada</span>
+<h3>Arquitectura del recorrido</h3>
+<ul>
+<li>Llamada o formulario como entrada pública principal</li>
+<li>Ruta corta a una persona por teléfono, sin IVR</li>
+<li>Acuse tras el envío, pero sin plazo ni responsable visibles</li>
+<li>Abandono del formulario sin ninguna intervención de recuperación</li>
+<li>Horario limitado de representantes entre semana</li>
+<li>Sin chat web ni autoservicio guiado visible</li>
+<li>Sin programación visible de devolución de llamada</li>
+<li>Sin centro de ayuda público ni historial persistente</li>
+</ul>
+</article>
+<article class="signal-column" data-reveal="">
+<span class="chain-label">Fricción intermedia · hipótesis</span>
+<h3>Fricción para clientes y colaboradores</h3>
+<ul>
+<li>Duda o abandono del formulario</li>
+<li>Cambio de web a teléfono para preguntas sencillas</li>
+<li>Demanda fuera de horario en espera asíncrona</li>
+<li>Calificación repetida o recaptura de contexto</li>
+<li>Preguntas rutinarias que consumen capacidad humana</li>
+</ul>
+</article>
+<article class="signal-column" data-reveal="">
+<span class="chain-label">Resultado final · por validar</span>
+<h3>Resultados de negocio</h3>
+<ul>
+<li>Interés en proyectos que nunca llega a un asistente</li>
+<li>Respuesta más lenta y menor confianza</li>
+<li>Mayor costo por proyecto calificado con éxito</li>
+<li>Experiencia variable a medida que crece el volumen</li>
+<li>Impacto en retención o reputación cuando el soporte se percibe poco receptivo</li>
+</ul>
+</article>
+</div>
+<div class="root-cause" data-reveal=""><strong>Hipótesis de causa raíz por validar:</strong> el desafío podría no ser la calidad del servicio, sino una orquestación limitada en el punto de entrada digital, donde la intención, el momento, el contexto del proyecto y la transferencia a una persona todavía no aparecen conectados de forma visible.</div>
+</div>
+</section>
+<section class="section white" id="referencias">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">08</span> Referencias análogas con Genesys</div>
+<h2>Dos operaciones con retos parecidos: coordinar servicio al hogar y reconocer al cliente antes de contestar.</h2>
+<p>Estas referencias forman parte de la perspectiva de Genesys y sirven para formular preguntas sobre devolución de llamada, reconocimiento del cliente y medición. No demuestran que HelpScore tenga los mismos problemas ni sustituyen un caso de negocio.</p>
+</div>
+<div class="ref-grid">
+<article class="ref-card" data-reveal="">
+<span class="ref-tagline">Coordinación de servicio al hogar</span>
+<h3>Housing Direct: mantenimiento de más de 36,000 viviendas</h3>
+<p>El centro de contacto del Department of Communities de Australia Occidental es un equipo de 76 personas que programa y gestiona trabajos de mantenimiento para más de 36,000 viviendas y 64,000 inquilinos, con cerca de 400,000 contactos anuales por teléfono y correo.</p>
+<ul>
+<li>Los clientes dejaron de hacer cola: ahora pueden solicitar una devolución de llamada.</li>
+<li>La integración del conmutador redujo transferencias y tiempos de espera.</li>
+<li>Las fallas de TI anuales bajaron de 1,200 a tres y la capacitación pasó de cuatro semanas a días.</li>
+</ul>
+<a href="https://www.genesys.com/customer-stories/housing-direct" rel="noreferrer" target="_blank">Caso oficial de Genesys ↗</a>
+</article>
+<article class="ref-card" data-reveal="">
+<span class="ref-tagline">Tecnología inmobiliaria y seguros</span>
+<h3>FCT: reconocer al cliente antes de aceptar la llamada</h3>
+<p>FCT es un proveedor nacional canadiense de tecnología inmobiliaria y seguro de título que conecta negocios con sus clientes mediante inteligencia sobre propiedades. Es un análogo cercano al lado de seguros y garantías de Porch Group.</p>
+<ul>
+<li>Al procesar transacciones, identifica al cliente antes de aceptar la llamada.</li>
+<li>Chat, cumplimiento PCI e integración con Salesforce en la misma plataforma.</li>
+<li>Gestión de personal integrada para mejorar enrutamiento y reportes.</li>
+</ul>
+<a href="https://www.genesys.com/customer-stories/fct" rel="noreferrer" target="_blank">Caso oficial de Genesys ↗</a>
+</article>
+</div>
+<div class="ref-caveat" data-reveal=""><strong>Por qué estas dos y no un marketplace de servicios:</strong> no se identificó un caso público de Genesys con un marketplace de servicios para el hogar directamente comparable a HelpScore. Housing Direct se eligió por el parecido operativo —coordinar trabajo de mantenimiento en vivienda a escala, con devolución de llamada como alternativa a la cola— y FCT por su cercanía con el lado de datos de propiedad y seguros del grupo. La comparación es de patrón operativo, no de modelo de negocio.</div>
+</div>
+</section>
+<section class="section white" id="north-star">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">09</span> Estado futuro ilustrativo</div>
+<h2>Un Asistente Digital del Hogar que prepara, en lugar de reemplazar, al Asistente del Hogar humano.</h2>
+<p>La visión objetivo no consiste en agregar un bot conversacional a la página principal. Consiste en crear una puerta de entrada conectada que entienda la intención, responda lo que pueda resolverse y entregue el contexto adecuado a una persona cuando la experiencia humana aporte valor.</p>
+</div>
+<div class="north-star-panel" data-reveal="">
+<div class="north-star-title">
+<div>
+<h3>Del interés anónimo en un proyecto a un recorrido contextual y medible del propietario.</h3>
+<p>Cada paso debe reducir la incertidumbre del propietario y el trabajo de reconstrucción para el Asistente del Hogar.</p>
+</div>
+<span class="north-star-badge">Sujeto a validación</span>
+</div>
+<div class="architecture">
+<article class="arch-card">
+<div class="arch-icon">
+<svg aria-hidden="true" fill="none" height="23" viewbox="0 0 24 24" width="23">
+<path d="M4 17V8l8-5 8 5v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"></path>
+<path d="M9 20v-6h6v6" stroke="currentColor" stroke-width="1.7"></path>
+</svg>
+</div>
+<span class="num">01 · Detectar</span>
+<h4>Comprender el momento</h4>
+<p>Utilizar página, categoría del proyecto, código postal, fuente de referencia, horario y comportamiento para reconocer intención y fricción probables.</p>
+</article>
+<article class="arch-card emphasis">
+<div class="arch-icon">
+<svg aria-hidden="true" fill="none" height="23" viewbox="0 0 24 24" width="23">
+<path d="M5 6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v5A2.5 2.5 0 0 1 16.5 14H10l-4.5 4V14A2.5 2.5 0 0 1 3 11.5v-5Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"></path>
+<path d="M8 9h8" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path>
+</svg>
+</div>
+<span class="num">02 · Guiar</span>
+<h4>Asistente Digital del Hogar</h4>
+<p>Responder preguntas frecuentes, aclarar el problema, validar la zona de servicio y capturar únicamente el siguiente dato útil.</p>
+</article>
+<article class="arch-card">
+<div class="arch-icon">
+<svg aria-hidden="true" fill="none" height="23" viewbox="0 0 24 24" width="23">
+<circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.7"></circle>
+<path d="M3.5 19c.6-3.2 2.7-5 5.5-5s4.9 1.8 5.5 5" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path>
+<path d="M16 8h5M18.5 5.5V10.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path>
+</svg>
+</div>
+<span class="num">03 · Conectar</span>
+<h4>Asistente del Hogar humano</h4>
+<p>Recibir la intención, los datos capturados, el resumen de la conversación, el historial del cliente y el siguiente paso recomendado.</p>
+</article>
+<article class="arch-card">
+<div class="arch-icon">
+<svg aria-hidden="true" fill="none" height="23" viewbox="0 0 24 24" width="23">
+<path d="M4 18h16M6 18V9l6-5 6 5v9" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"></path>
+<path d="M9 18v-5h6v5" stroke="currentColor" stroke-width="1.7"></path>
+</svg>
+</div>
+<span class="num">04 · Resolver</span>
+<h4>Profesional local adecuado</h4>
+<p>Conectar con un alcance más claro, preservar la responsabilidad y mantener informado al propietario sobre la siguiente acción.</p>
+</article>
+</div>
+<div class="learning-loop">
+<svg aria-hidden="true" fill="none" height="18" viewbox="0 0 24 24" width="18">
+<path d="M20 12a8 8 0 1 1-2.3-5.7L20 8.5M20 4v4.5h-4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+            La analítica del recorrido conecta intención, canal, transferencia, respuesta, resultado de la asignación, recontactos y satisfacción para que la experiencia mejore con el tiempo.
+          </div>
+<div aria-label="Capacidades habilitadoras ilustrativas" class="capability-tags">
+<span class="capability-tag">Web Messaging</span>
+<span class="capability-tag">Virtual Agent</span>
+<span class="capability-tag">Knowledge</span>
+<span class="capability-tag">Queue / Scheduled Callback</span>
+<span class="capability-tag">Predictive Engagement</span>
+<span class="capability-tag">Agent Copilot</span>
+<span class="capability-tag">Journey Management</span>
+<span class="capability-tag">Speech &amp; Text Analytics</span>
+</div>
+<p class="solution-note">Mapeo ilustrativo de Genesys. Las capacidades deben seleccionarse después de validar la demanda, las intenciones repetitivas, la preparación para integraciones, el riesgo y el valor de negocio medible.</p>
+</div>
+</div>
+</section>
+<section class="section soft" id="roadmap">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">10</span> Hoja de ruta pragmática</div>
+<h2>Primero confirmar el problema. Después simplificar, conectar y optimizar.</h2>
+<p>La hoja de ruta comienza de forma intencional con la medición y la responsabilidad sobre el recorrido. La tecnología debe responder al problema cuantificado, no precederlo.</p>
+</div>
+<div class="roadmap-grid">
+<article class="phase-card" data-reveal="">
+<span class="phase">Fase 1 · Confirmar y medir</span>
+<h3>Hacer visible el recorrido actual</h3>
+<p>Establecer la línea base y determinar si la brecha intermedia afecta de forma material la conversión, la capacidad de respuesta o la carga de trabajo.</p>
+<ul>
+<li>Mapear las transferencias entre llamada, formulario, SMS y correo</li>
+<li>Seguir un proyecto desde el inicio hasta su responsable</li>
+<li>Medir inicios, finalizaciones y abandonos</li>
+<li>Cuantificar la demanda y respuesta fuera de horario</li>
+<li>Definir el recorrido prioritario del proyecto</li>
+</ul>
+<div class="phase-gate">Criterio de avance: problema cuantificado y métrica de éxito acordada.</div>
+</article>
+<article class="phase-card" data-reveal="">
+<span class="phase">Fase 2 · Simplificar y conectar</span>
+<h3>Reducir la incertidumbre y la recaptura de datos</h3>
+<p>Crear una puerta de entrada digital más flexible, manteniendo al Asistente del Hogar como ancla de confianza.</p>
+<ul>
+<li>Hacer explícitas la confirmación y la siguiente acción</li>
+<li>Agregar mensajería web donde la demanda lo justifique</li>
+<li>Ofrecer devolución de llamada en momentos que requieren atención humana</li>
+<li>Utilizar conocimiento compartido para respuestas consistentes</li>
+<li>Transferir el contexto del proyecto al espacio de trabajo del agente</li>
+</ul>
+<div class="phase-gate">Criterio de avance: mejora medible en alcance, respuesta o esfuerzo.</div>
+</article>
+<article class="phase-card" data-reveal="">
+<span class="phase">Fase 3 · Personalizar y optimizar</span>
+<h3>Intervenir en el momento adecuado</h3>
+<p>Utilizar señales de comportamiento y del recorrido para escalar la promesa personal sin volver genérica la experiencia.</p>
+<ul>
+<li>Detectar dudas o abandono de visitantes con alta intención</li>
+<li>Automatizar de forma segura la calificación repetitiva</li>
+<li>Priorizar por intención, urgencia y afinidad</li>
+<li>Utilizar Copilot para mejorar la consistencia</li>
+<li>Conectar los resultados del recorrido con calidad y capacidad</li>
+</ul>
+<div class="phase-gate">Criterio de avance: valor de negocio sostenible, gobierno y adopción.</div>
+</article>
+</div>
+<div class="section-heading" data-reveal="" style="margin-top:70px;margin-bottom:24px">
+<div class="section-kicker">Métricas de línea base</div>
+<h2 style="font-size:clamp(30px,4vw,44px)">Métricas necesarias antes de construir el caso de negocio</h2>
+</div>
+<div class="metric-grid">
+<article class="metric-card" data-reveal=""><span class="metric-num">01</span><h3>Conversión de inicio a contacto</h3><p>Visitantes que llaman o envían una solicitud después de mostrar intención de proyecto.</p></article>
+<article class="metric-card" data-reveal=""><span class="metric-num">02</span><h3>Finalización del formulario</h3><p>Inicios, salidas por campo, envíos exitosos y solicitudes duplicadas.</p></article>
+<article class="metric-card" data-reveal=""><span class="metric-num">03</span><h3>Tiempo hasta la primera respuesta</h3><p>Por canal, tipo de proyecto, fuente, día y hora.</p></article>
+<article class="metric-card" data-reveal=""><span class="metric-num">04</span><h3>Demanda fuera de horario</h3><p>Proporción de actividad de alta intención fuera del horario de representantes.</p></article>
+<article class="metric-card" data-reveal=""><span class="metric-num">05</span><h3>Progresión hacia el profesional</h3><p>Contacto con el asistente, proyecto calificado, conexión con el profesional y resultado posterior.</p></article>
+<article class="metric-card" data-reveal=""><span class="metric-num">06</span><h3>Recontacto</h3><p>Mismo propietario y proyecto a través de llamadas, formularios, SMS o correos.</p></article>
+<article class="metric-card" data-reveal=""><span class="metric-num">07</span><h3>Esfuerzo asistido</h3><p>Tiempo de atención, transferencias, seguimientos y costo por proyecto calificado.</p></article>
+<article class="metric-card" data-reveal=""><span class="metric-num">08</span><h3>Confianza del cliente</h3><p>CSAT, claridad del siguiente paso, resolución y disposición para continuar.</p></article>
+</div>
+</div>
+</section>
+<section class="section white" id="discovery">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">11</span> Descubrimiento recomendado</div>
+<h2>Diez preguntas para completar la capa operativa que la investigación pública no puede revelar.</h2>
+<p>Estas preguntas están diseñadas para convertir el diagnóstico en una conversación colaborativa, no en un discurso de producto.</p>
+</div>
+<div class="discovery-banner" data-reveal="">
+<div class="icon-box" style="margin:0;background:rgba(247,201,72,0.14);color:var(--yellow)">
+<svg aria-hidden="true" fill="none" height="23" viewbox="0 0 24 24" width="23">
+<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"></circle>
+<path d="M9.8 9a2.4 2.4 0 0 1 4.7.7c0 1.8-2.5 2-2.5 3.8M12 17h.01" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<div><strong>Principio de descubrimiento</strong><p>No preguntar si HelpScore necesita chat. Preguntar en qué momento la demanda calificada de proyectos se vuelve difícil de ver, lenta de atender, costosa de procesar o desconectada de la experiencia del Asistente del Hogar.</p></div>
+</div>
+<div class="questions-grid">
+<details data-reveal="">
+<summary>1. De los propietarios que inician el recorrido de HelpScore, ¿qué porcentaje habla con un Asistente del Hogar o envía la solicitud del proyecto?</summary>
+<p>Esto establece el tamaño del recorrido de conversión visible y crea la base para medir la brecha intermedia.</p>
+</details>
+<details data-reveal="">
+<summary>2. ¿Qué ocurre inmediatamente después de enviar un formulario?</summary>
+<p>Confirmar la notificación, el responsable, la expectativa de respuesta, la deduplicación, el enrutamiento y el primer mensaje al cliente.</p>
+</details>
+<details data-reveal="">
+<summary>3. ¿El contexto del proyecto se conserva cuando un propietario cambia de la web o el formulario a voz, SMS o correo electrónico?</summary>
+<p>Buscar preguntas repetidas, búsquedas manuales, datos faltantes sobre página o fuente y registros distintos para el mismo proyecto.</p>
+</details>
+<details data-reveal="">
+<summary>4. ¿Cuánto tráfico de alta intención llega fuera del horario publicado de los representantes?</summary>
+<p>Comparar inicios de formulario fuera de horario, regresos, contactos al día siguiente y progresión final del proyecto.</p>
+</details>
+<details data-reveal="">
+<summary>5. ¿Cuáles son las preguntas más frecuentes antes de que un propietario esté listo para enviar la solicitud o llamar?</summary>
+<p>Identificar qué preguntas requieren experiencia humana y cuáles pueden responderse de forma segura con conocimiento o captura guiada.</p>
+</details>
+<details data-reveal="">
+<summary>6. ¿Cómo se enrutan hoy los proyectos por categoría, código postal, urgencia, fuente, disponibilidad y afinidad con el profesional?</summary>
+<p>Mapear la lógica de decisión, las excepciones, las transferencias y los puntos donde un Asistente del Hogar debe reconstruir información manualmente.</p>
+</details>
+<details data-reveal="">
+<summary>7. ¿SMS funciona como canal de servicio bidireccional o principalmente como mecanismo de seguimiento saliente?</summary>
+<p>Confirmar responsable, consentimiento, identidad, historial de mensajes y si las conversaciones por SMS comparten el mismo registro del proyecto.</p>
+</details>
+<details data-reveal="">
+<summary>8. ¿Qué interacciones consumen más tiempo del Asistente del Hogar sin requerir criterio humano?</summary>
+<p>Esto distingue la orientación humana de valor de tareas repetitivas de calificación, estatus, programación o preguntas frecuentes.</p>
+</details>
+<details data-reveal="">
+<summary>9. ¿En qué puntos los propietarios vuelven a contactar, cambian de canal o abandonan sin un siguiente paso claro?</summary>
+<p>Utilizar datos del recorrido para encontrar incertidumbre, no solo resultados finales como formularios enviados o conexiones completadas.</p>
+</details>
+<details data-reveal="">
+<summary>10. ¿Qué resultado es más importante para el primer caso de uso?</summary>
+<p>Elegir una métrica principal, como más proyectos calificados, respuesta más rápida, menor esfuerzo asistido, mayor progresión hacia el profesional o mayor confianza del cliente.</p>
+</details>
+</div>
+</div>
+</section>
+<section class="section soft" id="sources">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div class="section-kicker"><span class="num">12</span> Fuentes y metodología</div>
+<h2>Evidencia transparente para una conversación compartible con el cliente.</h2>
+<p>El diagnóstico combina el documento de investigación de HelpScore proporcionado con páginas públicas revisadas alrededor del 2 de septiembre de 2026.</p>
+</div>
+<div class="sources-grid">
+<div data-reveal="">
+<h3>Fuentes públicas seleccionadas</h3>
+<ol class="source-list">
+<li><a href="https://helpscore.com/" rel="noreferrer" target="_blank">Página principal de PGM HelpScore</a> — propuesta, recorrido de tres pasos y promesa al cliente.</li>
+<li><a href="https://helpscore.com/get-started/" rel="noreferrer" target="_blank">Página “Get Started” de PGM HelpScore</a> — número telefónico, horario de representantes, campos obligatorios y texto de consentimiento.</li>
+<li><a href="https://porchgroupmedia.com/" rel="noreferrer" target="_blank">PGM Solutions</a> — posicionamiento de datos sobre consumidores, hogares y señales de intención de compra.</li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1784535/000178453526000008/prch-20251231.htm" rel="noreferrer" target="_blank">Formulario 10-K 2025 de Porch Group</a> — escala de la empresa y contexto tecnológico del grupo.</li>
+<li><a href="https://www.angi.com/landing/how-it-works" rel="noreferrer" target="_blank">Angi: cómo funciona</a> — patrones de reserva inmediata, precios y solicitudes de cotización.</li>
+<li><a href="https://www.angi.com/landing/contact-us" rel="noreferrer" target="_blank">Angi: contacto y soporte</a> — rutas públicas de ayuda y soporte telefónico.</li>
+<li><a href="https://www.thumbtack.com/how-it-works" rel="noreferrer" target="_blank">Thumbtack: cómo funciona</a> — recorrido de búsqueda, conversación y reserva.</li>
+<li><a href="https://press.thumbtack.com/announcements/thumbtack-introduces-ai-powered-experience-to-reinvent-how-homeowners-care-for-their-homes/" rel="noreferrer" target="_blank">Anuncio de la experiencia de Thumbtack guiada por IA</a> — captura por texto, foto y voz, además del contexto del centro del proyecto.</li>
+<li><a href="https://www.frontdoor.com/" rel="noreferrer" target="_blank">Frontdoor</a> — orientación por video en vivo con expertos y acceso a profesionales locales.</li>
+<li><a href="https://www.gartner.com/en/newsroom/press-releases/2024-08-19-gartner-survey-finds-only-14-percent-of-customer-service-issues-are-fully-resolved-in-self-service" rel="noreferrer" target="_blank">Gartner: solo 14% de los casos se resuelve por completo en autoservicio</a> — encuesta a 5,728 clientes.</li>
+<li><a href="https://www.gartner.com/en/newsroom/press-releases/2025-08-27-gartner-survey-finds-self-service-and-live-chat-will-surpass-traditional-channels-as-top-customer-service-technologies-by-2027" rel="noreferrer" target="_blank">Gartner: autoservicio y chat en vivo superarían al teléfono y el correo hacia 2027</a>.</li>
+<li><a href="https://www.businesswire.com/news/home/20250602195774/en/Gartner-Survey-Finds-60-of-Customer-Service-Agents-Fail-to-Promote-Self-Service" rel="noreferrer" target="_blank">Gartner: disposición a adoptar un asistente con IA generativa</a> — encuesta a 5,801 clientes; el teléfono sigue dominando.</li>
+<li><a href="https://www.genesys.com/customer-stories/housing-direct" rel="noreferrer" target="_blank">Housing Direct + Genesys Cloud</a> — coordinación de mantenimiento de vivienda y devolución de llamada.</li>
+<li><a href="https://www.genesys.com/customer-stories/fct" rel="noreferrer" target="_blank">FCT + Genesys Cloud</a> — tecnología inmobiliaria, seguro de título y reconocimiento del cliente.</li>
+<li>HelpScore - Investigación de URL para BDR, Safari de CX y FTS Outreach, preparado el 2 de septiembre de 2026 (documento de investigación proporcionado).</li>
+<li><strong>Evidencia primaria de campo:</strong> un envío de la solicitud de proyecto, una llamada al número publicado y una prueba de abandono del formulario, el 4 de septiembre de 2026. Captura de la página de confirmación conservada fuera de este documento. No es una fuente externa ni una muestra estadística.</li>
+</ol>
+</div>
+<aside class="method-card" data-reveal="">
+<h3>Método y limitaciones</h3>
+<p>Este es un diagnóstico basado en información pública y en un recorrido exploratorio, no una auditoría. Revisa la experiencia visible para un visitante típico sin autenticación y convierte esas observaciones en hipótesis y preguntas.</p>
+<p>El recorrido de campo se realizó el 4 de septiembre de 2026 e incluyó un envío de la solicitud de proyecto a las 11:29 a. m. PT, una llamada al número publicado dentro del horario de representantes y una prueba de abandono del formulario. Es una muestra n=1: no representa todos los horarios, agentes, categorías de proyecto ni regiones, y los tiempos se registran como cronología observada, no como evaluación de cumplimiento.</p>
+<p>No se hacen afirmaciones sobre el CRM interno de HelpScore, su proveedor de centro de contacto, reglas de enrutamiento, dotación de personal, niveles de servicio, entrega de formularios, conversión, satisfacción del cliente o desempeño de agentes.</p>
+<p>El comparativo analiza únicamente patrones de interfaz pública. Los recorridos de los competidores pueden variar por ubicación, estado de inicio de sesión, categoría del proyecto, campaña, dispositivo y horario.</p>
+<div class="method-meta">
+<div><strong>Preparado</strong><span>2 de septiembre de 2026 · actualizado 4 de septiembre</span></div>
+<div><strong>Audiencia</strong><span>Ejecutiva / descubrimiento de CX</span></div>
+<div><strong>Evidencia</strong><span>Páginas públicas + recorrido n=1 + documento proporcionado</span></div>
+<div><strong>Uso</strong><span>Guía de hipótesis y conversación</span></div>
+</div>
+</aside>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container footer-inner">
+<span class="footer-mark"><span class="dot"></span> Diagnóstico de CX de HelpScore para el cliente</span>
+<span>Preparado desde una perspectiva de Consultoría de Soluciones · predescubrimiento público · no es una auditoría operativa</span>
+</div>
+</footer>
+<button aria-label="Volver arriba" class="back-to-top" id="backToTop" type="button">
+<svg aria-hidden="true" fill="none" height="20" viewbox="0 0 24 24" width="20">
+<path d="m6 14 6-6 6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<script>
+    (function () {
+      var menuButton = document.getElementById('menuButton');
+      var nav = document.getElementById('siteNav');
+      var printButton = document.getElementById('printButton');
+      var progress = document.getElementById('scrollProgress');
+      var backToTop = document.getElementById('backToTop');
+      var navLinks = Array.prototype.slice.call(nav.querySelectorAll('a'));
+      var sections = navLinks.map(function (link) { return document.querySelector(link.getAttribute('href')); }).filter(Boolean);
+
+      menuButton.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(open));
+      });
+
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('open');
+          menuButton.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      printButton.addEventListener('click', function () { window.print(); });
+      backToTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+      function onScroll() {
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        var pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+        progress.style.width = pct + '%';
+        backToTop.classList.toggle('show', doc.scrollTop > 700);
+      }
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+        document.querySelectorAll('[data-reveal]').forEach(function (el) { revealObserver.observe(el); });
+
+        var sectionObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              navLinks.forEach(function (link) {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+              });
+            }
+          });
+        }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+        sections.forEach(function (section) { sectionObserver.observe(section); });
+      } else {
+        document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('revealed'); });
+      }
+    }());
+  </script>
+</body>
+</html>
